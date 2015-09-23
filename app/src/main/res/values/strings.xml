@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">UTdroid_UI</string>
+
+    <string name="sample">1234567890abcdef</string>
+    <string name="button">ダイアログ</string>
+    <string name="toggle_on">バイブ</string>
+    <string name="toggle_off">バイブOFF</string>
+    <string name="hint_text">ここに文字を入力します</string>
+    <string name="checkbox">チェックボックス</string>
+    <string name="radiobutton">ラジオボタン</string>
+
+    <string name="action_search">Search</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_close">Close</string>
+</resources>
