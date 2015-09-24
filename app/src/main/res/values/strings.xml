@@ -9,7 +9,7 @@
     <string name="checkbox">チェックボックス</string>
     <string name="radiobutton">ラジオボタン</string>
 
-    <string name="action_search">Search</string>
+    <string name="action_notify">Notify</string>
     <string name="action_settings">Settings</string>
     <string name="action_close">Close</string>
 </resources>

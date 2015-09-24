@@ -1,10 +1,19 @@
 package jp.ac.u_tokyo.t.utdroid_ui;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -213,9 +222,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         /* メニュー項目にもidを振ってあるので、idで条件分岐 */
         switch (item.getItemId()) {
-            case R.id.action_search:
-                /* 簡易なポップアップを表示 */
-                Toast.makeText(MainActivity.this, "検索メニューが押下されました。", Toast.LENGTH_SHORT).show();
+            case R.id.action_notify:
+                /* 通知を表示するメソッドを呼び出す */
+                showNotification("タイトル","メッセージ");
                 break;
             case R.id.action_settings:
                 /* 簡易なポップアップを表示 */
@@ -229,5 +238,39 @@ public class MainActivity extends AppCompatActivity {
 
         /* 継承元の処理を実行させる */
         return super.onOptionsItemSelected(item);
+    }
+
+    /* 通知バーに通知を表示する */
+    private void showNotification(String title, String message) {
+        /* タップした時の動作を指定（詳細はIntentの回を参照） */
+        Intent bootIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, bootIntent, 0);
+
+        /* 通知の内容を指定する */
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            /* Android 4.4以下では、LargeIconのみを指定する。
+               通知エリア：アイコンがそのまま表示される
+               通知バー：サムネイルが表示される */
+            builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+            /* ティッカー表示はAndroid 5.0で廃止された */
+            builder.setTicker(title);
+        }else{
+            /* Android 5.0以上では、SmallIconと背景色を指定する。
+               通知エリア：背景色で塗り潰された円の中に、アイコンの不透明部分のみが白塗りで表示される
+               通知バー：アイコンの不透明部分のみが白塗りで表示される */
+            builder.setSmallIcon(R.drawable.ic_launcher);
+            builder.setColor(Color.rgb(34, 177, 76));
+        }
+        builder.setContentTitle(title);
+        builder.setContentText(message);
+        builder.setWhen(System.currentTimeMillis());
+        builder.setAutoCancel(true);
+        builder.setDefaults(Notification.DEFAULT_SOUND);
+        builder.setContentIntent(contentIntent);
+
+        /* 実際に通知を表示する */
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
     }
 }
