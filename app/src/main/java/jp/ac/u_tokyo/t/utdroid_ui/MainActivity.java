@@ -259,9 +259,9 @@ public class MainActivity extends AppCompatActivity {
             /* Android 5.0以上では、SmallIconと背景色を指定する。
                通知エリア：背景色で塗り潰された円の中に、アイコンの不透明部分のみが白塗りで表示される
                通知バー：アイコンの不透明部分のみが白塗りで表示される */
-            builder.setSmallIcon(R.drawable.ic_launcher);
             builder.setColor(Color.rgb(34, 177, 76));
         }
+        builder.setSmallIcon(R.drawable.ic_launcher);
         builder.setContentTitle(title);
         builder.setContentText(message);
         builder.setWhen(System.currentTimeMillis());
