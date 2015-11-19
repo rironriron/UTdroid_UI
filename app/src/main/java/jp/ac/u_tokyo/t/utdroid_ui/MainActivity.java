@@ -137,10 +137,11 @@ public class MainActivity extends AppCompatActivity {
 
             /**
              * 何も選ばなかった時に、onNothingSelectedが呼ばれる
-             * （具体的には、戻るボタンを押下した時や、範囲外をタップした時など）
+             * （実際には呼ばれることはまずない）
              */
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(MainActivity.this, "何も選ばれなかったよ。", Toast.LENGTH_SHORT).show();
 
             }
         });
