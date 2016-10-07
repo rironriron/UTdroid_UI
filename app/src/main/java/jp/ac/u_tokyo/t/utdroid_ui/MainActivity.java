@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         /* プルダウンリストの中身を定義 */
         String[] list = {"Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread",
-                "Honeycomb", "IceCream Sandwich", "Jellybean", "Kitkat", "Lollipop"};
+                "Honeycomb", "IceCream Sandwich", "Jellybean", "Kitkat", "Lollipop", "Marshmallow", "Nougat"};
         /* リストとUIを繋ぐアダプタ。2番目の引数はプルダウンの表示レイアウト（Android標準で用意されているものを使用） */
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, list);
         spinner.setAdapter(adapter);
