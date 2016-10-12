@@ -2,7 +2,12 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Action Barの色 -->
+        <item name="colorPrimary">#179588</item>
+        <!-- Status Barの色 -->
+        <item name="colorPrimaryDark">#117066</item>
+        <!-- UIパーツのアクセント色 -->
+        <item name="colorAccent">#cc0033</item>
     </style>
 
 </resources>
