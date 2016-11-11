@@ -22,10 +22,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -204,6 +206,17 @@ public class MainActivity extends AppCompatActivity {
                 RadioButton radioButton = (RadioButton) findViewById(checkedId);
             }
         });
+
+        // dpをpxに変換する倍率（物理解像度1080px幅の端末なら3.0）
+        final float dp2pxScale = getResources().getDisplayMetrics().density;
+
+        // ソースコード内から動的にViewを追加してみる
+        LinearLayout scrollRootLayout = (LinearLayout) findViewById(R.id.scrollRootLayout);
+        TextView piTextView = new TextView(this);
+        piTextView.setText("3.14159265358979...");
+        piTextView.setTextColor(Color.rgb(34, 177, 76));
+        piTextView.setPadding(0, 0, 0, (int)(30*dp2pxScale)); // ソースコード内でのサイズ指定はpx単位（dp単位ではない）
+        scrollRootLayout.addView(piTextView, 0);
     }
 
     /**
